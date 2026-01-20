@@ -1,0 +1,392 @@
+[
+  {
+    "id": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+    "questionText": "In what year was Las Vegas officially founded as a city?",
+    "optionalAnswers": [
+      {
+        "id": "f1e2d3c4-b5a6-4978-8c9d-0e1f2a3b4c5d",
+        "text": "1905",
+        "isCorrect": true
+      },
+      {
+        "id": "f2e3d4c5-b6a7-4089-9dae-1f2a3b4c5d6e",
+        "text": "1931",
+        "isCorrect": false
+      },
+      {
+        "id": "f3e4d5c6-b7a8-4190-aebf-2f3a4b5c6d7e",
+        "text": "1946",
+        "isCorrect": false
+      },
+      {
+        "id": "f4e5d6c7-b8a9-4201-bfc0-3f4a5b6c7d8e",
+        "text": "1955",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
+    "questionText": "Which famous hotel was the first mega-resort on the Las Vegas Strip?",
+    "optionalAnswers": [
+      {
+        "id": "a1b2c3d4-e5f6-4978-8c9d-0e1f2a3b4c5d",
+        "text": "The Flamingo",
+        "isCorrect": true
+      },
+      {
+        "id": "a2b3c4d5-e6f7-4089-9dae-1f2a3b4c5d6e",
+        "text": "The Sands",
+        "isCorrect": false
+      },
+      {
+        "id": "a3b4c5d6-e7f8-4190-aebf-2f3a4b5c6d7e",
+        "text": "Caesars Palace",
+        "isCorrect": false
+      },
+      {
+        "id": "a4b5c6d7-e8f9-4201-bfc0-3f4a5b6c7d8e",
+        "text": "The Bellagio",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+    "questionText": "What is the nickname commonly given to Las Vegas?",
+    "optionalAnswers": [
+      {
+        "id": "b1c2d3e4-f5a6-4978-8c9d-0e1f2a3b4c5d",
+        "text": "Sin City",
+        "isCorrect": true
+      },
+      {
+        "id": "b2c3d4e5-f6a7-4089-9dae-1f2a3b4c5d6e",
+        "text": "The Big Apple",
+        "isCorrect": false
+      },
+      {
+        "id": "b3c4d5e6-f7a8-4190-aebf-2f3a4b5c6d7e",
+        "text": "The Windy City",
+        "isCorrect": false
+      },
+      {
+        "id": "b4c5d6e7-f8a9-4201-bfc0-3f4a5b6c7d8e",
+        "text": "The Golden State",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a",
+    "questionText": "How many hotels and casinos line the famous Las Vegas Strip?",
+    "optionalAnswers": [
+      {
+        "id": "c1d2e3f4-a5b6-4978-8c9d-0e1f2a3b4c5d",
+        "text": "Over 30",
+        "isCorrect": true
+      },
+      {
+        "id": "c2d3e4f5-a6b7-4089-9dae-1f2a3b4c5d6e",
+        "text": "About 15",
+        "isCorrect": false
+      },
+      {
+        "id": "c3d4e5f6-a7b8-4190-aebf-2f3a4b5c6d7e",
+        "text": "Around 50",
+        "isCorrect": false
+      },
+      {
+        "id": "c4d5e6f7-a8b9-4201-bfc0-3f4a5b6c7d8e",
+        "text": "Over 100",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "e5f6a7b8-c9d0-4e1f-2a3b-4c5d6e7f8a9b",
+    "questionText": "What is the tallest structure in Las Vegas?",
+    "optionalAnswers": [
+      {
+        "id": "d1e2f3a4-b5c6-4978-8c9d-0e1f2a3b4c5d",
+        "text": "The Stratosphere Tower",
+        "isCorrect": true
+      },
+      {
+        "id": "d2e3f4a5-b6c7-4089-9dae-1f2a3b4c5d6e",
+        "text": "The Eiffel Tower replica",
+        "isCorrect": false
+      },
+      {
+        "id": "d3e4f5a6-b7c8-4190-aebf-2f3a4b5c6d7e",
+        "text": "The High Roller observation wheel",
+        "isCorrect": false
+      },
+      {
+        "id": "d4e5f6a7-b8c9-4201-bfc0-3f4a5b6c7d8e",
+        "text": "The Luxor pyramid",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "f6a7b8c9-d0e1-4f2a-3b4c-5d6e7f8a9b0c",
+    "questionText": "Which famous entertainer was known as 'Mr. Las Vegas'?",
+    "optionalAnswers": [
+      {
+        "id": "e1f2a3b4-c5d6-4978-8c9d-0e1f2a3b4c5d",
+        "text": "Wayne Newton",
+        "isCorrect": true
+      },
+      {
+        "id": "e2f3a4b5-c6d7-4089-9dae-1f2a3b4c5d6e",
+        "text": "Elvis Presley",
+        "isCorrect": false
+      },
+      {
+        "id": "e3f4a5b6-c7d8-4190-aebf-2f3a4b5c6d7e",
+        "text": "Frank Sinatra",
+        "isCorrect": false
+      },
+      {
+        "id": "e4f5a6b7-c8d9-4201-bfc0-3f4a5b6c7d8e",
+        "text": "Dean Martin",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "a7b8c9d0-e1f2-4a3b-4c5d-6e7f8a9b0c1d",
+    "questionText": "What famous fountain show takes place outside the Bellagio hotel?",
+    "optionalAnswers": [
+      {
+        "id": "f1a2b3c4-d5e6-4978-8c9d-0e1f2a3b4c5d",
+        "text": "The Fountains of Bellagio",
+        "isCorrect": true
+      },
+      {
+        "id": "f2a3b4c5-d6e7-4089-9dae-1f2a3b4c5d6e",
+        "text": "The Dancing Waters",
+        "isCorrect": false
+      },
+      {
+        "id": "f3a4b5c6-d7e8-4190-aebf-2f3a4b5c6d7e",
+        "text": "The Mirage Volcano",
+        "isCorrect": false
+      },
+      {
+        "id": "f4a5b6c7-d8e9-4201-bfc0-3f4a5b6c7d8e",
+        "text": "The Water Show",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "b8c9d0e1-f2a3-4b4c-5d6e-7f8a9b0c1d2e",
+    "questionText": "How long is the Las Vegas Strip?",
+    "optionalAnswers": [
+      {
+        "id": "a1b2c3d4-e5f6-4978-8c9d-0e1f2a3b4c5d",
+        "text": "Approximately 4.2 miles",
+        "isCorrect": true
+      },
+      {
+        "id": "a2b3c4d5-e6f7-4089-9dae-1f2a3b4c5d6e",
+        "text": "About 2 miles",
+        "isCorrect": false
+      },
+      {
+        "id": "a3b4c5d6-e7f8-4190-aebf-2f3a4b5c6d7e",
+        "text": "Around 6 miles",
+        "isCorrect": false
+      },
+      {
+        "id": "a4b5c6d7-e8f9-4201-bfc0-3f4a5b6c7d8e",
+        "text": "Over 10 miles",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "c9d0e1f2-a3b4-4c5d-6e7f-8a9b0c1d2e3f",
+    "questionText": "What is the largest hotel by room count in Las Vegas?",
+    "optionalAnswers": [
+      {
+        "id": "b1c2d3e4-f5a6-4978-8c9d-0e1f2a3b4c5d",
+        "text": "MGM Grand",
+        "isCorrect": true
+      },
+      {
+        "id": "b2c3d4e5-f6a7-4089-9dae-1f2a3b4c5d6e",
+        "text": "The Venetian",
+        "isCorrect": false
+      },
+      {
+        "id": "b3c4d5e6-f7a8-4190-aebf-2f3a4b5c6d7e",
+        "text": "Caesars Palace",
+        "isCorrect": false
+      },
+      {
+        "id": "b4c5d6e7-f8a9-4201-bfc0-3f4a5b6c7d8e",
+        "text": "Wynn Las Vegas",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "d0e1f2a3-b4c5-4d6e-7f8a-9b0c1d2e3f4a",
+    "questionText": "Which iconic Vegas hotel was imploded in 2016?",
+    "optionalAnswers": [
+      {
+        "id": "c1d2e3f4-a5b6-4978-8c9d-0e1f2a3b4c5d",
+        "text": "The Riviera",
+        "isCorrect": true
+      },
+      {
+        "id": "c2d3e4f5-a6b7-4089-9dae-1f2a3b4c5d6e",
+        "text": "The Dunes",
+        "isCorrect": false
+      },
+      {
+        "id": "c3d4e5f6-a7b8-4190-aebf-2f3a4b5c6d7e",
+        "text": "The Stardust",
+        "isCorrect": false
+      },
+      {
+        "id": "c4d5e6f7-a8b9-4201-bfc0-3f4a5b6c7d8e",
+        "text": "The Sahara",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "e1f2a3b4-c5d6-4e7f-8a9b-0c1d2e3f4a5b",
+    "questionText": "What year did gambling become legal in Nevada?",
+    "optionalAnswers": [
+      {
+        "id": "d1e2f3a4-b5c6-4978-8c9d-0e1f2a3b4c5d",
+        "text": "1931",
+        "isCorrect": true
+      },
+      {
+        "id": "d2e3f4a5-b6c7-4089-9dae-1f2a3b4c5d6e",
+        "text": "1905",
+        "isCorrect": false
+      },
+      {
+        "id": "d3e4f5a6-b7c8-4190-aebf-2f3a4b5c6d7e",
+        "text": "1946",
+        "isCorrect": false
+      },
+      {
+        "id": "d4e5f6a7-b8c9-4201-bfc0-3f4a5b6c7d8e",
+        "text": "1960",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "f2a3b4c5-d6e7-4f8a-9b0c-1d2e3f4a5b6c",
+    "questionText": "What replica of a famous world landmark can be found at The Venetian?",
+    "optionalAnswers": [
+      {
+        "id": "e1f2a3b4-c5d6-4978-8c9d-0e1f2a3b4c5d",
+        "text": "The Grand Canal",
+        "isCorrect": true
+      },
+      {
+        "id": "e2f3a4b5-c6d7-4089-9dae-1f2a3b4c5d6e",
+        "text": "The Colosseum",
+        "isCorrect": false
+      },
+      {
+        "id": "e3f4a5b6-c7d8-4190-aebf-2f3a4b5c6d7e",
+        "text": "The Eiffel Tower",
+        "isCorrect": false
+      },
+      {
+        "id": "e4f5a6b7-c8d9-4201-bfc0-3f4a5b6c7d8e",
+        "text": "Big Ben",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "a3b4c5d6-e7f8-4a9b-0c1d-2e3f4a5b6c7d",
+    "questionText": "What is the famous street in downtown Las Vegas known for its LED canopy?",
+    "optionalAnswers": [
+      {
+        "id": "f1a2b3c4-d5e6-4978-8c9d-0e1f2a3b4c5d",
+        "text": "Fremont Street",
+        "isCorrect": true
+      },
+      {
+        "id": "f2a3b4c5-d6e7-4089-9dae-1f2a3b4c5d6e",
+        "text": "Las Vegas Boulevard",
+        "isCorrect": false
+      },
+      {
+        "id": "f3a4b5c6-d7e8-4190-aebf-2f3a4b5c6d7e",
+        "text": "Paradise Road",
+        "isCorrect": false
+      },
+      {
+        "id": "f4a5b6c7-d8e9-4201-bfc0-3f4a5b6c7d8e",
+        "text": "Sahara Avenue",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "b4c5d6e7-f8a9-4b0c-1d2e-3f4a5b6c7d8e",
+    "questionText": "Which Las Vegas hotel features a half-scale replica of the Eiffel Tower?",
+    "optionalAnswers": [
+      {
+        "id": "a1b2c3d4-e5f6-4978-8c9d-0e1f2a3b4c5d",
+        "text": "Paris Las Vegas",
+        "isCorrect": true
+      },
+      {
+        "id": "a2b3c4d5-e6f7-4089-9dae-1f2a3b4c5d6e",
+        "text": "The Venetian",
+        "isCorrect": false
+      },
+      {
+        "id": "a3b4c5d6-e7f8-4190-aebf-2f3a4b5c6d7e",
+        "text": "Caesars Palace",
+        "isCorrect": false
+      },
+      {
+        "id": "a4b5c6d7-e8f9-4201-bfc0-3f4a5b6c7d8e",
+        "text": "The Luxor",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "c5d6e7f8-a9b0-4c1d-2e3f-4a5b6c7d8e9f",
+    "questionText": "What is the name of the famous Las Vegas sign that welcomes visitors?",
+    "optionalAnswers": [
+      {
+        "id": "b1c2d3e4-f5a6-4978-8c9d-0e1f2a3b4c5d",
+        "text": "Welcome to Fabulous Las Vegas",
+        "isCorrect": true
+      },
+      {
+        "id": "b2c3d4e5-f6a7-4089-9dae-1f2a3b4c5d6e",
+        "text": "Welcome to Sin City",
+        "isCorrect": false
+      },
+      {
+        "id": "b3c4d5e6-f7a8-4190-aebf-2f3a4b5c6d7e",
+        "text": "Welcome to Las Vegas Strip",
+        "isCorrect": false
+      },
+      {
+        "id": "b4c5d6e7-f8a9-4201-bfc0-3f4a5b6c7d8e",
+        "text": "Welcome to Nevada",
+        "isCorrect": false
+      }
+    ]
+  }
+]

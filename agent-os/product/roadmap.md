@@ -2,7 +2,7 @@
 
 1. [] User Authentication with Username — Implement username-based login where users enter a username to access the game, with the username stored in browser memory (localStorage or sessionStorage) to maintain identity across page interactions without backend session management. `S`
 
-2. [ ] Trivia Question Data Model and Storage — Create Java domain models for trivia questions with multiple-choice answers and correct answer tracking, implementing in-memory HashMap storage for the question bank with ability to retrieve questions sequentially or randomly. `S`
+2. [x] Trivia Question Data Model and Storage — Create Java domain models for trivia questions with multiple-choice answers and correct answer tracking, implementing in-memory HashMap storage for the question bank with ability to retrieve questions sequentially or randomly. `S`
 
 3. [ ] Question Display API — Build RESTful API endpoint to serve trivia questions to the frontend, including question text, multiple-choice options, and question metadata, with JSON serialization and proper CORS configuration for SPA access. `S`
 
