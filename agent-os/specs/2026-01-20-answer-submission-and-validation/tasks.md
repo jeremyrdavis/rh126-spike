@@ -13,24 +13,24 @@ This implementation creates a REST API endpoint that accepts user answer submiss
 #### Task Group 1: Request and Response DTOs
 **Dependencies:** None
 
-- [ ] 1.0 Complete DTO records for answer submission
-  - [ ] 1.1 Write 2-8 focused tests for AnswerSubmission and AnswerResponse records
+- [x] 1.0 Complete DTO records for answer submission
+  - [x] 1.1 Write 2-8 focused tests for AnswerSubmission and AnswerResponse records
     - Limit to 2-8 highly focused tests maximum
     - Test only critical behaviors (e.g., record creation, field accessors, JSON deserialization for AnswerSubmission, JSON serialization for AnswerResponse)
     - Skip exhaustive testing of all field combinations
     - Test file: `src/test/java/com/redhat/demos/model/AnswerSubmissionTest.java`
     - Test file: `src/test/java/com/redhat/demos/model/AnswerResponseTest.java`
-  - [ ] 1.2 Create AnswerSubmission Java Record in package com.redhat.demos.model
+  - [x] 1.2 Create AnswerSubmission Java Record in package com.redhat.demos.model
     - Define three fields: `String username`, `UUID questionId`, `String selectedAnswer`
     - No validation annotations needed (validation in service layer)
     - No custom constructors needed (use default record constructor)
     - Record automatically deserializes from JSON via Jackson
-  - [ ] 1.3 Create AnswerResponse Java Record in package com.redhat.demos.model
+  - [x] 1.3 Create AnswerResponse Java Record in package com.redhat.demos.model
     - Define four fields: `boolean isCorrect`, `String correctAnswer`, `Question originalQuestion`, `TriviaQuestion nextQuestion`
     - No validation annotations needed
     - No custom constructors needed (use default record constructor)
     - Record automatically serializes to JSON via Jackson
-  - [ ] 1.4 Ensure DTO layer tests pass
+  - [x] 1.4 Ensure DTO layer tests pass
     - Run ONLY the 2-8 tests written in 1.1
     - Verify record creation and accessors work
     - Verify JSON deserialization for AnswerSubmission
@@ -49,18 +49,18 @@ This implementation creates a REST API endpoint that accepts user answer submiss
 #### Task Group 2: Leaderboard Storage
 **Dependencies:** None
 
-- [ ] 2.0 Complete leaderboard repository
-  - [ ] 2.1 Write 2-8 focused tests for LeaderboardRepository functionality
+- [x] 2.0 Complete leaderboard repository
+  - [x] 2.1 Write 2-8 focused tests for LeaderboardRepository functionality
     - Limit to 2-8 highly focused tests maximum
     - Test only critical behaviors (e.g., score increments on first correct answer, duplicate prevention works, multiple users tracked separately)
     - Skip exhaustive coverage of edge cases
     - Test file: `src/test/java/com/redhat/demos/repository/LeaderboardRepositoryTest.java`
-  - [ ] 2.2 Create LeaderboardRepository class in package com.redhat.demos.repository
+  - [x] 2.2 Create LeaderboardRepository class in package com.redhat.demos.repository
     - Annotate with @ApplicationScoped for singleton CDI bean
     - Create two private HashMap fields: `HashMap<String, Set<UUID>> userCorrectQuestions` and `HashMap<String, Integer> userScores`
     - Initialize both HashMaps in constructor
     - No @PostConstruct needed for empty maps
-  - [ ] 2.3 Implement recordAnswer method
+  - [x] 2.3 Implement recordAnswer method
     - Method signature: `void recordAnswer(String username, UUID questionId, boolean isCorrect)`
     - If isCorrect is false, return immediately (no score penalty)
     - If isCorrect is true, check if questionId is already in user's Set
@@ -69,7 +69,7 @@ This implementation creates a REST API endpoint that accepts user answer submiss
     - If `Set.add()` returns true (new question), increment score in userScores map
     - If `Set.add()` returns false (duplicate), do not modify score
     - Use `userScores.merge(username, 1, Integer::sum)` for score increment
-  - [ ] 2.4 Ensure repository layer tests pass
+  - [x] 2.4 Ensure repository layer tests pass
     - Run ONLY the 2-8 tests written in 2.1
     - Verify score increments correctly on first correct answer
     - Verify duplicate correct answers do not increment score
@@ -89,23 +89,23 @@ This implementation creates a REST API endpoint that accepts user answer submiss
 #### Task Group 3: Leaderboard Service
 **Dependencies:** Task Group 2
 
-- [ ] 3.0 Complete leaderboard service
-  - [ ] 3.1 Write 2-8 focused tests for LeaderboardService functionality
+- [x] 3.0 Complete leaderboard service
+  - [x] 3.1 Write 2-8 focused tests for LeaderboardService functionality
     - Limit to 2-8 highly focused tests maximum
     - Test only critical behaviors (e.g., delegates to repository correctly, handles null repository gracefully)
     - Skip exhaustive testing of business logic (covered in repository tests)
     - Test file: `src/test/java/com/redhat/demos/service/LeaderboardServiceTest.java`
-  - [ ] 3.2 Create LeaderboardService class in package com.redhat.demos.service
+  - [x] 3.2 Create LeaderboardService class in package com.redhat.demos.service
     - Annotate with @ApplicationScoped for singleton CDI bean
     - Use constructor injection to inject LeaderboardRepository
     - Add null validation for LeaderboardRepository in constructor
     - Throw IllegalArgumentException if repository is null
     - Store repository as private final field
-  - [ ] 3.3 Implement recordAnswer method
+  - [x] 3.3 Implement recordAnswer method
     - Method signature: `void recordAnswer(String username, UUID questionId, boolean isCorrect)`
     - Delegate directly to `leaderboardRepository.recordAnswer(username, questionId, isCorrect)`
     - No additional business logic needed for MVP
-  - [ ] 3.4 Ensure leaderboard service tests pass
+  - [x] 3.4 Ensure leaderboard service tests pass
     - Run ONLY the 2-8 tests written in 3.1
     - Verify constructor null validation works
     - Verify delegation to repository works correctly
@@ -123,26 +123,26 @@ This implementation creates a REST API endpoint that accepts user answer submiss
 #### Task Group 4: Answer Validation Service
 **Dependencies:** Task Groups 1, 3
 
-- [ ] 4.0 Complete answer validation service
-  - [ ] 4.1 Write 2-8 focused tests for AnswerService functionality
+- [x] 4.0 Complete answer validation service
+  - [x] 4.1 Write 2-8 focused tests for AnswerService functionality
     - Limit to 2-8 highly focused tests maximum
     - Test only critical behaviors (e.g., correct answer validation works, incorrect answer validation works, calls LeaderboardService, returns next question)
     - Skip exhaustive testing of edge cases
     - Test file: `src/test/java/com/redhat/demos/service/AnswerServiceTest.java`
-  - [ ] 4.2 Create AnswerService class in package com.redhat.demos.service
+  - [x] 4.2 Create AnswerService class in package com.redhat.demos.service
     - Annotate with @ApplicationScoped for singleton CDI bean
     - Use constructor injection to inject QuestionService, LeaderboardService, and EnvironmentRepository
     - Add null validation for all three dependencies in constructor
     - Throw IllegalArgumentException if any dependency is null
     - Store all dependencies as private final fields
-  - [ ] 4.3 Implement input validation in submitAnswer method
+  - [x] 4.3 Implement input validation in submitAnswer method
     - Method signature: `Optional<AnswerResponse> submitAnswer(AnswerSubmission submission)`
     - Validate username is non-null and non-empty (throw IllegalArgumentException with message "Invalid username")
     - Validate questionId is non-null (throw IllegalArgumentException with message "Invalid questionId")
     - Validate selectedAnswer is non-null and one of "A", "B", "C", "D" (throw IllegalArgumentException with message "Invalid answer selection")
     - Use String.isEmpty() for username validation
     - Use Set.of("A", "B", "C", "D").contains(selectedAnswer) for answer validation
-  - [ ] 4.4 Implement answer validation logic
+  - [x] 4.4 Implement answer validation logic
     - Call `questionService.getQuestionById(submission.questionId())` to retrieve question
     - If Optional is empty, return Optional.empty()
     - Extract Question from Optional
@@ -151,13 +151,13 @@ This implementation creates a REST API endpoint that accepts user answer submiss
     - Use switch expression or if-else chain for index to letter mapping
     - Compare `submission.selectedAnswer()` to correctAnswer for equality
     - Store result in boolean isCorrect variable
-  - [ ] 4.5 Implement score tracking and response construction
+  - [x] 4.5 Implement score tracking and response construction
     - Call `leaderboardService.recordAnswer(submission.username(), submission.questionId(), isCorrect)`
     - Call `questionService.getRandomTriviaQuestion()` to get next question
     - Extract TriviaQuestion from Optional or use null if empty
     - Construct AnswerResponse with: isCorrect, correctAnswer, question (original Question object), nextQuestion (TriviaQuestion or null)
     - Return Optional.of(answerResponse)
-  - [ ] 4.6 Ensure answer service tests pass
+  - [x] 4.6 Ensure answer service tests pass
     - Run ONLY the 2-8 tests written in 4.1
     - Verify input validation throws appropriate exceptions
     - Verify correct answer validation works
@@ -181,26 +181,26 @@ This implementation creates a REST API endpoint that accepts user answer submiss
 #### Task Group 5: REST Endpoint
 **Dependencies:** Task Group 4
 
-- [ ] 5.0 Complete REST API endpoint
-  - [ ] 5.1 Write 2-8 focused tests for AnswerResource endpoint
+- [x] 5.0 Complete REST API endpoint
+  - [x] 5.1 Write 2-8 focused tests for AnswerResource endpoint
     - Limit to 2-8 highly focused tests maximum
     - Test only critical behaviors (e.g., HTTP 200 with valid submission, HTTP 400 for invalid input, HTTP 404 when question not found, HTTP 500 on error)
     - Skip exhaustive testing of all error scenarios
     - Test file: `src/test/java/com/redhat/demos/AnswerResourceTest.java`
-  - [ ] 5.2 Create AnswerResource class in package com.redhat.demos
+  - [x] 5.2 Create AnswerResource class in package com.redhat.demos
     - Annotate class with @Path("/api/answers")
     - Use constructor injection to inject AnswerService
     - Add null validation for AnswerService in constructor
     - Throw IllegalArgumentException if service is null
     - Store service as private final field
-  - [ ] 5.3 Implement POST /api/answers endpoint
+  - [x] 5.3 Implement POST /api/answers endpoint
     - Create method annotated with @POST, @Consumes(MediaType.APPLICATION_JSON), @Produces(MediaType.APPLICATION_JSON)
     - Accept AnswerSubmission parameter in request body
     - Wrap service call in try-catch block
     - Call `answerService.submitAnswer(submission)` and store result
     - If Optional contains AnswerResponse, return it directly via `Response.ok(answerResponse).build()` (HTTP 200)
     - If Optional is empty, return `Response.status(404).entity("Question not found").build()`
-  - [ ] 5.4 Implement error handling
+  - [x] 5.4 Implement error handling
     - Catch IllegalArgumentException for validation errors
     - Return HTTP 400 with exception message as entity
     - Use `Response.status(400).entity(e.getMessage()).build()` pattern
@@ -208,7 +208,7 @@ This implementation creates a REST API endpoint that accepts user answer submiss
     - Return HTTP 500 with "Internal server error" message
     - Use `Response.status(500).entity("Internal server error").build()` pattern
     - Follow try-catch pattern from QuestionResource
-  - [ ] 5.5 Ensure API layer tests pass
+  - [x] 5.5 Ensure API layer tests pass
     - Run ONLY the 2-8 tests written in 5.1
     - Verify endpoint returns HTTP 200 with valid AnswerResponse JSON
     - Verify endpoint returns HTTP 400 with appropriate message for invalid input
@@ -230,15 +230,15 @@ This implementation creates a REST API endpoint that accepts user answer submiss
 #### Task Group 6: Integration Testing and Gap Analysis
 **Dependencies:** Task Groups 1-5
 
-- [ ] 6.0 Review existing tests and fill critical gaps only
-  - [ ] 6.1 Review tests from Task Groups 1-5
+- [x] 6.0 Review existing tests and fill critical gaps only
+  - [x] 6.1 Review tests from Task Groups 1-5
     - Review the 2-8 tests written for DTO records (Task 1.1)
     - Review the 2-8 tests written for LeaderboardRepository (Task 2.1)
     - Review the 2-8 tests written for LeaderboardService (Task 3.1)
     - Review the 2-8 tests written for AnswerService (Task 4.1)
     - Review the 2-8 tests written for AnswerResource endpoint (Task 5.1)
     - Total existing tests: approximately 10-40 tests
-  - [ ] 6.2 Analyze test coverage gaps for this feature only
+  - [x] 6.2 Analyze test coverage gaps for this feature only
     - Identify critical end-to-end workflows that lack test coverage
     - Focus ONLY on gaps related to Answer Submission and Validation feature requirements
     - Do NOT assess entire application test coverage
@@ -249,7 +249,7 @@ This implementation creates a REST API endpoint that accepts user answer submiss
       - Submit duplicate correct answer -> Score unchanged -> Next question returned
       - Submit answer to non-existent question -> 404 error
       - Submit invalid input -> 400 error with appropriate message
-  - [ ] 6.3 Write up to 10 additional strategic tests maximum
+  - [x] 6.3 Write up to 10 additional strategic tests maximum
     - Add maximum of 10 new integration tests to fill identified critical gaps
     - Focus on end-to-end API workflows (request -> validation -> score tracking -> response)
     - Test JSON request/response structure matches AnswerSubmission/AnswerResponse schemas
@@ -258,7 +258,7 @@ This implementation creates a REST API endpoint that accepts user answer submiss
     - Test that multiple users can submit answers independently
     - Do NOT write comprehensive coverage for all scenarios
     - Skip performance tests and load testing unless business-critical
-  - [ ] 6.4 Run feature-specific tests only
+  - [x] 6.4 Run feature-specific tests only
     - Run ONLY tests related to Answer Submission and Validation feature
     - Expected total: approximately 20-50 tests maximum
     - Verify all critical workflows pass

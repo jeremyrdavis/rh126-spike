@@ -6,7 +6,7 @@
 
 3. [x] Question Display API — Build RESTful API endpoint to serve trivia questions to the frontend, including question text, multiple-choice options, and question metadata, with JSON serialization and proper CORS configuration for SPA access. `S`
 
-4. [ ] Answer Submission and Validation — Implement API endpoint to accept user answer submissions, validate against correct answers, track scoring, and store user responses in memory with HashMap-based storage linking usernames to their answer history. `M`
+4. [x] Answer Submission and Validation — Implement API endpoint to accept user answer submissions, validate against correct answers, track scoring, and store user responses in memory with HashMap-based storage linking usernames to their answer history. `M`
 
 5. [ ] Leaderboard Calculation and API — Create leaderboard ranking system that calculates scores based on correct answers, implements sorting logic, and exposes RESTful endpoint to retrieve current rankings with usernames and scores. `S`
 
