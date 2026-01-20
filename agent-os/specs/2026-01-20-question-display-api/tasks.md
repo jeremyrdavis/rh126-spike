@@ -13,19 +13,19 @@ This implementation creates a REST API endpoint that retrieves random trivia que
 #### Task Group 1: Environment Message Repository
 **Dependencies:** None
 
-- [ ] 1.0 Complete environment message repository
-  - [ ] 1.1 Write 2-8 focused tests for EnvironmentRepository functionality
+- [x] 1.0 Complete environment message repository
+  - [x] 1.1 Write 2-8 focused tests for EnvironmentRepository functionality
     - Limit to 2-8 highly focused tests maximum
     - Test only critical behaviors (e.g., returns non-null message, returns one of the four expected messages, randomization works)
     - Skip exhaustive coverage of edge cases
     - Test file: `src/test/java/com/redhat/demos/repository/EnvironmentRepositoryTest.java`
-  - [ ] 1.2 Create EnvironmentRepository class in package com.redhat.demos.repository
+  - [x] 1.2 Create EnvironmentRepository class in package com.redhat.demos.repository
     - Annotate with @ApplicationScoped for singleton CDI bean
     - Create four private static final String constants with placeholder Quarkus messages
     - Implement getRandomMessage() method returning String
     - Use ThreadLocalRandom.current().nextInt(4) for random selection (follows QuestionRepository.findRandom() pattern)
     - Return one of the four hardcoded messages
-  - [ ] 1.3 Ensure repository layer tests pass
+  - [x] 1.3 Ensure repository layer tests pass
     - Run ONLY the 2-8 tests written in 1.1
     - Verify getRandomMessage() returns expected messages
     - Do NOT run the entire test suite at this stage
@@ -41,18 +41,18 @@ This implementation creates a REST API endpoint that retrieves random trivia que
 #### Task Group 2: TriviaQuestion DTO Record
 **Dependencies:** None
 
-- [ ] 2.0 Complete TriviaQuestion DTO
-  - [ ] 2.1 Write 2-8 focused tests for TriviaQuestion record
+- [x] 2.0 Complete TriviaQuestion DTO
+  - [x] 2.1 Write 2-8 focused tests for TriviaQuestion record
     - Limit to 2-8 highly focused tests maximum
     - Test only critical behaviors (e.g., record creation, field accessors, JSON serialization)
     - Skip exhaustive testing of all field combinations
     - Test file: `src/test/java/com/redhat/demos/model/TriviaQuestionTest.java`
-  - [ ] 2.2 Create TriviaQuestion Java Record in package com.redhat.demos.model
+  - [x] 2.2 Create TriviaQuestion Java Record in package com.redhat.demos.model
     - Define six String fields: questionText, option1, option2, option3, option4, environment
     - No validation annotations needed
     - No custom constructors needed (use default record constructor)
     - Record automatically serializes to JSON via Jackson
-  - [ ] 2.3 Ensure DTO layer tests pass
+  - [x] 2.3 Ensure DTO layer tests pass
     - Run ONLY the 2-8 tests written in 2.1
     - Verify record creation and accessors work
     - Verify JSON serialization produces expected structure
@@ -69,22 +69,22 @@ This implementation creates a REST API endpoint that retrieves random trivia que
 #### Task Group 3: QuestionService Enhancement
 **Dependencies:** Task Groups 1, 2
 
-- [ ] 3.0 Complete QuestionService enhancement
-  - [ ] 3.1 Write 2-8 focused tests for service layer DTO mapping
+- [x] 3.0 Complete QuestionService enhancement
+  - [x] 3.1 Write 2-8 focused tests for service layer DTO mapping
     - Limit to 2-8 highly focused tests maximum
     - Test only critical behaviors (e.g., successful DTO mapping with environment message, empty Optional when no questions, correct Answer-to-option mapping)
     - Skip exhaustive testing of all edge cases
     - Test file: `src/test/java/com/redhat/demos/service/QuestionServiceTest.java` (enhance existing)
-  - [ ] 3.2 Modify QuestionService constructor to inject EnvironmentRepository
+  - [x] 3.2 Modify QuestionService constructor to inject EnvironmentRepository
     - Update constructor signature to accept both QuestionRepository and EnvironmentRepository
     - Add null validation for EnvironmentRepository following existing pattern
     - Store EnvironmentRepository as private final field
-  - [ ] 3.3 Implement getRandomTriviaQuestion() method
+  - [x] 3.3 Implement getRandomTriviaQuestion() method
     - Return type: Optional<TriviaQuestion>
     - Call questionRepository.findRandom() to get Optional<Question>
     - If question not present, return Optional.empty()
     - If question present, map to TriviaQuestion DTO
-  - [ ] 3.4 Implement DTO mapping logic within getRandomTriviaQuestion()
+  - [x] 3.4 Implement DTO mapping logic within getRandomTriviaQuestion()
     - Extract Question.questionText() to TriviaQuestion.questionText
     - Map Question.optionalAnswers() List to four option fields by index
       - Index 0 -> option1 (using Answer.text())
@@ -94,7 +94,7 @@ This implementation creates a REST API endpoint that retrieves random trivia que
     - Do NOT expose Answer.isCorrect() field in DTO
     - Call environmentRepository.getRandomMessage() to populate environment field
     - Return Optional.of(triviaQuestion)
-  - [ ] 3.5 Ensure service layer tests pass
+  - [x] 3.5 Ensure service layer tests pass
     - Run ONLY the 2-8 tests written in 3.1
     - Verify DTO mapping extracts correct fields
     - Verify environment message is included
@@ -113,31 +113,31 @@ This implementation creates a REST API endpoint that retrieves random trivia que
 #### Task Group 4: REST Endpoint
 **Dependencies:** Task Group 3
 
-- [ ] 4.0 Complete REST API endpoint
-  - [ ] 4.1 Write 2-8 focused tests for QuestionResource endpoint
+- [x] 4.0 Complete REST API endpoint
+  - [x] 4.1 Write 2-8 focused tests for QuestionResource endpoint
     - Limit to 2-8 highly focused tests maximum
     - Test only critical behaviors (e.g., HTTP 200 with valid JSON, HTTP 404 when no questions, HTTP 500 on error)
     - Skip exhaustive testing of all response scenarios
     - Test file: `src/test/java/com/redhat/demos/QuestionResourceTest.java`
-  - [ ] 4.2 Create QuestionResource class in package com.redhat.demos
+  - [x] 4.2 Create QuestionResource class in package com.redhat.demos
     - Annotate class with @Path("/api/questions")
     - Use constructor injection to inject QuestionService
     - Add null validation for QuestionService in constructor
-  - [ ] 4.3 Implement GET /api/questions/random endpoint
+  - [x] 4.3 Implement GET /api/questions/random endpoint
     - Create method annotated with @GET, @Path("/random"), @Produces(MediaType.APPLICATION_JSON)
     - Call questionService.getRandomTriviaQuestion()
     - If Optional contains TriviaQuestion, return it directly (HTTP 200)
     - If Optional is empty, return Response.status(404).entity("No questions available").build()
     - Wrap in try-catch for unexpected exceptions
-  - [ ] 4.4 Implement error handling
+  - [x] 4.4 Implement error handling
     - Return HTTP 200 with TriviaQuestion JSON for successful retrieval
     - Return HTTP 404 with message "No questions available" when service returns empty Optional
     - Return HTTP 500 with message "Internal server error" for unexpected exceptions
     - Use Response.status(statusCode).entity(message).build() pattern from IndexResource
-  - [ ] 4.5 Add CORS configuration
+  - [x] 4.5 Add CORS configuration
     - Add property quarkus.http.cors=true to src/main/resources/application.properties
     - Enables frontend SPA to consume API from same-origin or different-origin contexts
-  - [ ] 4.6 Ensure API layer tests pass
+  - [x] 4.6 Ensure API layer tests pass
     - Run ONLY the 2-8 tests written in 4.1
     - Verify endpoint returns HTTP 200 with valid JSON
     - Verify endpoint returns HTTP 404 when no questions exist
@@ -157,20 +157,20 @@ This implementation creates a REST API endpoint that retrieves random trivia que
 #### Task Group 5: Integration Testing and Gap Analysis
 **Dependencies:** Task Groups 1-4
 
-- [ ] 5.0 Review existing tests and fill critical gaps only
-  - [ ] 5.1 Review tests from Task Groups 1-4
+- [x] 5.0 Review existing tests and fill critical gaps only
+  - [x] 5.1 Review tests from Task Groups 1-4
     - Review the 2-8 tests written for EnvironmentRepository (Task 1.1)
     - Review the 2-8 tests written for TriviaQuestion DTO (Task 2.1)
     - Review the 2-8 tests written for QuestionService enhancement (Task 3.1)
     - Review the 2-8 tests written for QuestionResource endpoint (Task 4.1)
     - Total existing tests: approximately 8-32 tests
-  - [ ] 5.2 Analyze test coverage gaps for this feature only
+  - [x] 5.2 Analyze test coverage gaps for this feature only
     - Identify critical end-to-end workflows that lack test coverage
     - Focus ONLY on gaps related to Question Display API feature requirements
     - Do NOT assess entire application test coverage
     - Prioritize integration tests over additional unit tests
     - Key workflow to verify: Request random question -> Service maps DTO with environment message -> API returns JSON
-  - [ ] 5.3 Write up to 10 additional strategic tests maximum
+  - [x] 5.3 Write up to 10 additional strategic tests maximum
     - Add maximum of 10 new integration tests to fill identified critical gaps
     - Focus on end-to-end API workflows (request -> response)
     - Test JSON response structure matches TriviaQuestion schema
@@ -178,7 +178,7 @@ This implementation creates a REST API endpoint that retrieves random trivia que
     - Test that Answer.isCorrect() field is NOT exposed in JSON response
     - Do NOT write comprehensive coverage for all scenarios
     - Skip performance tests and load testing unless business-critical
-  - [ ] 5.4 Run feature-specific tests only
+  - [x] 5.4 Run feature-specific tests only
     - Run ONLY tests related to Question Display API feature
     - Expected total: approximately 18-42 tests maximum
     - Verify all critical workflows pass

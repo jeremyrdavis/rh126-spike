@@ -4,13 +4,13 @@
 
 2. [x] Trivia Question Data Model and Storage — Create Java domain models for trivia questions with multiple-choice answers and correct answer tracking, implementing in-memory HashMap storage for the question bank with ability to retrieve questions sequentially or randomly. `S`
 
-3. [ ] Question Display API — Build RESTful API endpoint to serve trivia questions to the frontend, including question text, multiple-choice options, and question metadata, with JSON serialization and proper CORS configuration for SPA access. `S`
+3. [x] Question Display API — Build RESTful API endpoint to serve trivia questions to the frontend, including question text, multiple-choice options, and question metadata, with JSON serialization and proper CORS configuration for SPA access. `S`
 
 4. [ ] Answer Submission and Validation — Implement API endpoint to accept user answer submissions, validate against correct answers, track scoring, and store user responses in memory with HashMap-based storage linking usernames to their answer history. `M`
 
 5. [ ] Leaderboard Calculation and API — Create leaderboard ranking system that calculates scores based on correct answers, implements sorting logic, and exposes RESTful endpoint to retrieve current rankings with usernames and scores. `S`
 
-6. [ ] Informational Messaging System — Build randomized message rotation system with three predefined messages about Quarkus/application features, implementing backend logic to randomly select messages and include them in question API responses. `XS`
+6. [x] Informational Messaging System — Build randomized message rotation system with three predefined messages about Quarkus/application features, implementing backend logic to randomly select messages and include them in question API responses. `XS`
 
 7. [x] Frontend SPA with Quarkus Web Bundler — Set up Quarkus Web Bundler extension, create single-page application structure in src/main/resources/web, implement login screen with username input form, and configure bundler to serve SPA through Quarkus. `M`
 
