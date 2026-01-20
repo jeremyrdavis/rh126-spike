@@ -63,4 +63,14 @@ public class LeaderboardRepository {
     public HashMap<String, Integer> getAllScores() {
         return new HashMap<>(userScores);
     }
+
+    /**
+     * Retrieves the count of questions answered correctly for a user.
+     *
+     * @param username the username
+     * @return the number of unique questions answered correctly, or 0 if the user has not answered any questions correctly
+     */
+    public int getQuestionsAnsweredCorrectly(String username) {
+        return userCorrectQuestions.getOrDefault(username, Set.of()).size();
+    }
 }
