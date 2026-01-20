@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Vegas Trivia - Red Hat One Las Vegas</title>
+    <link rel="icon" type="image/svg+xml" href="/static/logo.svg"/>
+    {#bundle /}
+</head>
+<body>
+    <div id="app">
+        <!-- Login Screen -->
+        <div id="login-screen" class="screen">
+            <div class="container">
+                <h1 class="banner">Welcome to Red Hat One Las Vegas Trivia</h1>
+                <form id="login-form" class="login-form">
+                    <div class="form-group">
+                        <label for="username-input">Username</label>
+                        <input
+                            type="text"
+                            id="username-input"
+                            name="username"
+                            placeholder="Enter your name"
+                            autocomplete="off"
+                            aria-describedby="username-error"
+                            maxlength="30"
+                        />
+                        <div id="username-error" class="error-message" role="alert" aria-live="polite"></div>
+                    </div>
+                    <button type="submit" id="start-button" class="btn btn-primary" disabled>
+                        Start Playing
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Welcome Screen -->
+        <div id="welcome-screen" class="screen hidden">
+            <div class="container">
+                <div class="welcome-card">
+                    <h2 id="welcome-message"></h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Screen -->
+        <div id="game-screen" class="screen hidden">
+            <div class="container">
+                <div class="game-content">
+                    <p class="loading-message">Loading...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,273 @@
+/**
+ * Vegas Trivia Styles
+ * Simple, clean styling with Red Hat branding inspiration
+ */
+
+:root {
+    --color-primary: #ee0000;
+    --color-primary-dark: #cc0000;
+    --color-text: #151515;
+    --color-text-light: #6a6e73;
+    --color-background: #ffffff;
+    --color-surface: #f5f5f5;
+    --color-border: #d2d2d2;
+    --color-error: #c9190b;
+    --color-success: #3e8635;
+    --color-error-bg: #faeae8;
+    --color-success-bg: #f3faf2;
+
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+
+    --border-radius: 0.25rem;
+    --transition: all 0.2s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Red Hat Display', 'Red Hat Text', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+                 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    color: var(--color-text);
+    background-color: var(--color-background);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+#app {
+    min-height: 100vh;
+}
+
+/* Screen Management */
+.screen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: var(--spacing-md);
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.screen.hidden {
+    display: none;
+}
+
+.screen.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Banner */
+.banner {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    line-height: 1.2;
+}
+
+@media (max-width: 768px) {
+    .banner {
+        font-size: 1.5rem;
+        margin-bottom: var(--spacing-lg);
+    }
+}
+
+/* Login Form */
+.login-form {
+    background: var(--color-surface);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .login-form {
+        padding: var(--spacing-lg);
+    }
+}
+
+.form-group {
+    margin-bottom: var(--spacing-lg);
+}
+
+label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    font-weight: 600;
+    color: var(--color-text);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: var(--spacing-sm);
+    font-size: 1rem;
+    border: 2px solid var(--color-border);
+    border-radius: var(--border-radius);
+    background-color: var(--color-background);
+    color: var(--color-text);
+    transition: var(--transition);
+    font-family: inherit;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(238, 0, 0, 0.1);
+}
+
+input[type="text"].input-error {
+    border-color: var(--color-error);
+}
+
+input[type="text"].input-error:focus {
+    box-shadow: 0 0 0 3px rgba(201, 25, 11, 0.1);
+}
+
+input[type="text"].input-success {
+    border-color: var(--color-success);
+}
+
+input[type="text"].input-success:focus {
+    box-shadow: 0 0 0 3px rgba(62, 134, 53, 0.1);
+}
+
+/* Error Message */
+.error-message {
+    margin-top: var(--spacing-xs);
+    font-size: 0.875rem;
+    color: var(--color-error);
+    min-height: 1.25rem;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.error-message.visible {
+    opacity: 1;
+}
+
+/* Button */
+.btn {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: inherit;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(238, 0, 0, 0.3);
+}
+
+.btn-primary:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.btn-primary:disabled {
+    background-color: var(--color-border);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Welcome Card */
+.welcome-card {
+    background: var(--color-surface);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#welcome-message {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+    #welcome-message {
+        font-size: 1.25rem;
+    }
+}
+
+/* Game Screen */
+.game-content {
+    background: var(--color-surface);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.loading-message {
+    font-size: 1.25rem;
+    color: var(--color-text-light);
+    font-style: italic;
+}
+
+/* Responsive Typography */
+@media (max-width: 480px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Focus visible for keyboard navigation */
+*:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
