@@ -35,7 +35,7 @@ class AnswerResourceTest {
         Answer answer3 = new Answer(UUID.randomUUID(), "Berlin", false);
         Answer answer4 = new Answer(UUID.randomUUID(), "Madrid", false);
         Question question = new Question(questionId, "Capital?", List.of(answer1, answer2, answer3, answer4));
-        TriviaQuestion nextQuestion = new TriviaQuestion("Next?", "A", "B", "C", "D", "Msg");
+        TriviaQuestion nextQuestion = new TriviaQuestion(UUID.randomUUID(), "Next?", "A", "B", "C", "D", "Msg");
         AnswerResponse answerResponse = new AnswerResponse(true, "A", question, nextQuestion);
 
         AnswerSubmission submission = new AnswerSubmission("user", questionId, "A");
@@ -136,7 +136,7 @@ class AnswerResourceTest {
         Answer answer3 = new Answer(UUID.randomUUID(), "Berlin", false);
         Answer answer4 = new Answer(UUID.randomUUID(), "Madrid", false);
         Question question = new Question(questionId, "Capital?", List.of(answer1, answer2, answer3, answer4));
-        TriviaQuestion nextQuestion = new TriviaQuestion("Next?", "A", "B", "C", "D", "Msg");
+        TriviaQuestion nextQuestion = new TriviaQuestion(UUID.randomUUID(), "Next?", "A", "B", "C", "D", "Msg");
         AnswerResponse answerResponse = new AnswerResponse(false, "B", question, nextQuestion);
 
         AnswerSubmission submission = new AnswerSubmission("user", questionId, "A");

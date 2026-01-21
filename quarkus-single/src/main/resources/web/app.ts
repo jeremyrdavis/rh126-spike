@@ -8,6 +8,7 @@ import { StorageManager } from './utils/storage';
 import { UsernameValidator } from './utils/validator';
 
 interface TriviaQuestion {
+    id: string;
     questionText: string;
     option1: string;
     option2: string;
@@ -64,7 +65,6 @@ class VegasTriviaApp {
     // State
     private questionData: TriviaQuestion | null = null;
     private selectedAnswer: string | null = null;
-    private currentQuestionId: string | null = null;
 
     constructor() {
         this.storageManager = new StorageManager();
@@ -328,14 +328,8 @@ class VegasTriviaApp {
     }
 
     private async submitAnswer(): Promise<void> {
-        if (!this.selectedAnswer || !this.currentQuestionId) {
-            // If no question ID yet (first question), we need to handle this
-            // For now, we'll use a placeholder - backend should handle this
-            const username = this.storageManager.getUsername();
-            if (!username) {
-                this.showQuestionError('Please log in again.');
-                return;
-            }
+        if (!this.selectedAnswer || !this.questionData) {
+            return;
         }
 
         try {
@@ -356,7 +350,7 @@ class VegasTriviaApp {
             // Prepare submission data
             const submission: AnswerSubmission = {
                 username: username,
-                questionId: this.currentQuestionId || 'initial',
+                questionId: this.questionData!.id,
                 selectedAnswer: this.selectedAnswer!,
             };
 
@@ -374,9 +368,6 @@ class VegasTriviaApp {
             }
 
             const result: AnswerResponse = await response.json();
-
-            // Store question ID for next submission
-            this.currentQuestionId = result.originalQuestion.id;
 
             // Display result
             this.displayResult(result);

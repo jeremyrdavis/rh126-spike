@@ -22,7 +22,7 @@ class AnswerResponseTest {
         Answer answer4 = new Answer(UUID.randomUUID(), "Madrid", false);
         Question question = new Question(questionId, "What is the capital of France?",
             List.of(answer1, answer2, answer3, answer4));
-        TriviaQuestion nextQuestion = new TriviaQuestion(
+        TriviaQuestion nextQuestion = new TriviaQuestion(UUID.randomUUID(), 
             "Next question?", "A", "B", "C", "D", "Message"
         );
 
@@ -49,7 +49,7 @@ class AnswerResponseTest {
         Answer answer4 = new Answer(UUID.randomUUID(), "Unknown", false);
         Question question = new Question(questionId, "Is this a test?",
             List.of(answer1, answer2, answer3, answer4));
-        TriviaQuestion nextQuestion = new TriviaQuestion(
+        TriviaQuestion nextQuestion = new TriviaQuestion(UUID.randomUUID(), 
             "Next?", "1", "2", "3", "4", "Env"
         );
 
@@ -81,7 +81,7 @@ class AnswerResponseTest {
         UUID questionId = UUID.randomUUID();
         Answer answer = new Answer(UUID.randomUUID(), "Answer", true);
         Question question = new Question(questionId, "Question?", List.of(answer));
-        TriviaQuestion nextQuestion = new TriviaQuestion("Next?", "A", "B", "C", "D", "Msg");
+        TriviaQuestion nextQuestion = new TriviaQuestion(UUID.randomUUID(), "Next?", "A", "B", "C", "D", "Msg");
 
         AnswerResponse response1 = new AnswerResponse(true, "A", question, nextQuestion);
         AnswerResponse response2 = new AnswerResponse(true, "A", question, nextQuestion);

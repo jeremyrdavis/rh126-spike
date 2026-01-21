@@ -83,6 +83,7 @@ public class QuestionService {
         String environmentMessage = environmentRepository.getRandomMessage();
 
         TriviaQuestion triviaQuestion = new TriviaQuestion(
+            question.id(),
             question.questionText(),
             answers.get(0).text(),
             answers.get(1).text(),

@@ -4,6 +4,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 
+import java.util.UUID;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class TriviaQuestionTest {
@@ -12,7 +14,7 @@ class TriviaQuestionTest {
 
     @Test
     void shouldCreateTriviaQuestionRecord() {
-        TriviaQuestion question = new TriviaQuestion(
+        TriviaQuestion question = new TriviaQuestion(UUID.randomUUID(), 
             "What is the capital of France?",
             "Paris",
             "London",
@@ -32,7 +34,7 @@ class TriviaQuestionTest {
 
     @Test
     void shouldSerializeToJson() throws JsonProcessingException {
-        TriviaQuestion question = new TriviaQuestion(
+        TriviaQuestion question = new TriviaQuestion(UUID.randomUUID(), 
             "Test Question",
             "Option A",
             "Option B",
@@ -70,13 +72,14 @@ class TriviaQuestionTest {
 
     @Test
     void shouldHandleRecordEquality() {
-        TriviaQuestion question1 = new TriviaQuestion(
+        UUID sameId = UUID.randomUUID();
+        TriviaQuestion question1 = new TriviaQuestion(sameId,
             "Question", "A", "B", "C", "D", "Env"
         );
-        TriviaQuestion question2 = new TriviaQuestion(
+        TriviaQuestion question2 = new TriviaQuestion(sameId,
             "Question", "A", "B", "C", "D", "Env"
         );
-        TriviaQuestion question3 = new TriviaQuestion(
+        TriviaQuestion question3 = new TriviaQuestion(UUID.randomUUID(),
             "Different", "A", "B", "C", "D", "Env"
         );
 

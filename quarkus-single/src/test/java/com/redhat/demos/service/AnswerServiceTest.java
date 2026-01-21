@@ -66,7 +66,7 @@ class AnswerServiceTest {
         Answer answer4 = new Answer(UUID.randomUUID(), "Madrid", false);
         Question question = new Question(questionId, "Capital of France?", List.of(answer1, answer2, answer3, answer4));
 
-        TriviaQuestion nextQuestion = new TriviaQuestion("Next?", "A", "B", "C", "D", "Msg");
+        TriviaQuestion nextQuestion = new TriviaQuestion(UUID.randomUUID(), "Next?", "A", "B", "C", "D", "Msg");
 
         when(questionService.getQuestionById(questionId)).thenReturn(Optional.of(question));
         when(questionService.getRandomTriviaQuestion()).thenReturn(Optional.of(nextQuestion));
@@ -96,7 +96,7 @@ class AnswerServiceTest {
         Answer answer4 = new Answer(UUID.randomUUID(), "Madrid", false);
         Question question = new Question(questionId, "Capital of UK?", List.of(answer1, answer2, answer3, answer4));
 
-        TriviaQuestion nextQuestion = new TriviaQuestion("Next?", "A", "B", "C", "D", "Msg");
+        TriviaQuestion nextQuestion = new TriviaQuestion(UUID.randomUUID(), "Next?", "A", "B", "C", "D", "Msg");
 
         when(questionService.getQuestionById(questionId)).thenReturn(Optional.of(question));
         when(questionService.getRandomTriviaQuestion()).thenReturn(Optional.of(nextQuestion));
@@ -193,7 +193,7 @@ class AnswerServiceTest {
         Answer answer4 = new Answer(UUID.randomUUID(), "A4", false);
         Question question = new Question(questionId, "Q1?", List.of(answer1, answer2, answer3, answer4));
 
-        TriviaQuestion nextQuestion = new TriviaQuestion("Q2?", "B1", "B2", "B3", "B4", "Env");
+        TriviaQuestion nextQuestion = new TriviaQuestion(UUID.randomUUID(), "Q2?", "B1", "B2", "B3", "B4", "Env");
 
         when(questionService.getQuestionById(questionId)).thenReturn(Optional.of(question));
         when(questionService.getRandomTriviaQuestion()).thenReturn(Optional.of(nextQuestion));
