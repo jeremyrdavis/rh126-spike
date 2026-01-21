@@ -437,7 +437,7 @@ input[type="text"].input-success:focus {
 
 .leaderboard-navigation {
     margin-bottom: var(--spacing-md);
-    text-align: left;
+    text-align: right;
 }
 
 .leaderboard-title {
