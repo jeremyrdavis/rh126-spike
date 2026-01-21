@@ -273,6 +273,7 @@ input[type="text"].input-success:focus {
 }
 
 .game-navigation {
+    margin-top: var(--spacing-lg);
     margin-bottom: var(--spacing-md);
     text-align: right;
 }
