@@ -1,8 +1,9 @@
 # quarkus-single
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
-
-If you want to learn more about Quarkus, please visit its website: <https://quarkus.io/>.
+## TODO
+Tied users should be displayed alphabetically and all should have the same badge if in 1-3 position
+Users with 0 correct answers should be displayed at the bottom, ordered alphabetically
+Change the order of trivia answers
 
 ## Running the application in dev mode
 
