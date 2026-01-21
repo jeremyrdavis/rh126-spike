@@ -23,13 +23,22 @@ interface AnswerSubmission {
     selectedAnswer: string;
 }
 
+interface Answer {
+    id: string;
+    text: string;
+    isCorrect: boolean;
+}
+
+interface Question {
+    id: string;
+    questionText: string;
+    optionalAnswers: Answer[];
+}
+
 interface AnswerResponse {
     isCorrect: boolean;
     correctAnswer: string;
-    originalQuestion: {
-        id: string;
-        questionText: string;
-    };
+    originalQuestion: Question;
     nextQuestion: TriviaQuestion | null;
 }
 
@@ -397,8 +406,14 @@ class VegasTriviaApp {
         // Display original question
         this.resultQuestion.textContent = response.originalQuestion.questionText;
 
-        // Display correct answer
-        this.resultCorrectAnswer.textContent = `Correct answer: ${response.correctAnswer}`;
+        // Find the correct answer text from optionalAnswers
+        const correctAnswerObj = response.originalQuestion.optionalAnswers.find(
+            answer => answer.isCorrect
+        );
+        const correctAnswerText = correctAnswerObj ? correctAnswerObj.text : 'Unknown';
+
+        // Display correct answer with letter and text
+        this.resultCorrectAnswer.textContent = `Correct answer: ${response.correctAnswer} - ${correctAnswerText}`;
 
         // Automatically load next question after delay
         setTimeout(() => {
