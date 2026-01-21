@@ -47,6 +47,11 @@
         <div id="game-screen" class="screen hidden">
             <div class="container">
                 <div class="game-content">
+                    <!-- Navigation -->
+                    <div class="game-navigation">
+                        <button type="button" id="view-leaderboard" class="btn-nav">View Leaderboard</button>
+                    </div>
+
                     <!-- Loading Spinner -->
                     <div id="question-loading" class="loading-container hidden">
                         <p class="loading-message">Loading...</p>
@@ -94,6 +99,38 @@
                         <p id="result-question" class="result-question-text"></p>
                         <p id="result-correct-answer" class="correct-answer-text"></p>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Leaderboard Screen -->
+        <div id="leaderboard-screen" class="screen hidden">
+            <div class="container">
+                <div class="leaderboard-content">
+                    <!-- Navigation -->
+                    <div class="leaderboard-navigation">
+                        <button type="button" id="back-to-game" class="btn-nav">Back to Game</button>
+                    </div>
+
+                    <h2 class="leaderboard-title">Leaderboard</h2>
+
+                    <!-- Loading Spinner -->
+                    <div id="leaderboard-loading" class="loading-container hidden">
+                        <p class="loading-message">Loading leaderboard...</p>
+                    </div>
+
+                    <!-- Error Display -->
+                    <div id="leaderboard-error" class="error-container hidden">
+                        <div class="error-message visible" role="alert" aria-live="polite">
+                            <p id="leaderboard-error-text"></p>
+                        </div>
+                        <button type="button" id="retry-leaderboard" class="btn btn-primary">
+                            Try Again
+                        </button>
+                    </div>
+
+                    <!-- Leaderboard List -->
+                    <div id="leaderboard-list" class="leaderboard-list hidden"></div>
                 </div>
             </div>
         </div>

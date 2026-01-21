@@ -16,7 +16,7 @@
 
 8. [x] Question Display and Answer Submission UI — Build frontend components to display trivia questions with multiple-choice buttons, handle answer selection and submission via API calls, show informational messages alongside questions, and automatically transition to next question after submission. `M`
 
-9. [ ] Leaderboard Display UI — Create leaderboard view component that fetches rankings from API, displays usernames and scores in sorted order, and updates in real-time as users submit answers with periodic polling or manual refresh. `S`
+9. [x] Leaderboard Display UI — Create leaderboard view component that fetches rankings from API, displays usernames and scores in sorted order, and updates in real-time as users submit answers with periodic polling or manual refresh. `S`
 
 10. [ ] Integration Testing and Polish — Perform end-to-end testing of complete user flow from login through question answering to leaderboard viewing, verify message randomization works correctly, ensure data persistence in HashMaps throughout gameplay session, and add visual polish to UI. `M`
 

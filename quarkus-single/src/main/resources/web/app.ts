@@ -42,6 +42,16 @@ interface AnswerResponse {
     nextQuestion: TriviaQuestion | null;
 }
 
+interface LeaderboardEntry {
+    username: string;
+    score: number;
+    rank: number;
+    questionsAnsweredCorrectly: number;
+}
+
+// Leaderboard auto-refresh interval in milliseconds
+const LEADERBOARD_REFRESH_INTERVAL = 60000;
+
 class VegasTriviaApp {
     private storageManager: StorageManager;
     private validator: UsernameValidator;
@@ -50,11 +60,16 @@ class VegasTriviaApp {
     private loginScreen: HTMLElement;
     private welcomeScreen: HTMLElement;
     private gameScreen: HTMLElement;
+    private leaderboardScreen: HTMLElement;
     private loginForm: HTMLFormElement;
     private usernameInput: HTMLInputElement;
     private startButton: HTMLButtonElement;
     private errorDisplay: HTMLElement;
     private welcomeMessage: HTMLElement;
+
+    // DOM Elements - Navigation
+    private viewLeaderboardButton: HTMLButtonElement;
+    private backToGameButton: HTMLButtonElement;
 
     // DOM Elements - Question Display
     private questionLoading: HTMLElement;
@@ -71,9 +86,18 @@ class VegasTriviaApp {
     private resultQuestion: HTMLElement;
     private resultCorrectAnswer: HTMLElement;
 
+    // DOM Elements - Leaderboard
+    private leaderboardLoading: HTMLElement;
+    private leaderboardError: HTMLElement;
+    private leaderboardErrorText: HTMLElement;
+    private retryLeaderboardButton: HTMLButtonElement;
+    private leaderboardList: HTMLElement;
+
     // State
     private questionData: TriviaQuestion | null = null;
     private selectedAnswer: string | null = null;
+    private leaderboardData: LeaderboardEntry[] = [];
+    private leaderboardRefreshTimer: number | null = null;
 
     constructor() {
         this.storageManager = new StorageManager();
@@ -83,11 +107,16 @@ class VegasTriviaApp {
         this.loginScreen = document.getElementById('login-screen') as HTMLElement;
         this.welcomeScreen = document.getElementById('welcome-screen') as HTMLElement;
         this.gameScreen = document.getElementById('game-screen') as HTMLElement;
+        this.leaderboardScreen = document.getElementById('leaderboard-screen') as HTMLElement;
         this.loginForm = document.getElementById('login-form') as HTMLFormElement;
         this.usernameInput = document.getElementById('username-input') as HTMLInputElement;
         this.startButton = document.getElementById('start-button') as HTMLButtonElement;
         this.errorDisplay = document.getElementById('username-error') as HTMLElement;
         this.welcomeMessage = document.getElementById('welcome-message') as HTMLElement;
+
+        // Initialize navigation DOM elements
+        this.viewLeaderboardButton = document.getElementById('view-leaderboard') as HTMLButtonElement;
+        this.backToGameButton = document.getElementById('back-to-game') as HTMLButtonElement;
 
         // Initialize question DOM elements
         this.questionLoading = document.getElementById('question-loading') as HTMLElement;
@@ -102,6 +131,13 @@ class VegasTriviaApp {
         this.resultMessage = document.getElementById('result-message') as HTMLElement;
         this.resultQuestion = document.getElementById('result-question') as HTMLElement;
         this.resultCorrectAnswer = document.getElementById('result-correct-answer') as HTMLElement;
+
+        // Initialize leaderboard DOM elements
+        this.leaderboardLoading = document.getElementById('leaderboard-loading') as HTMLElement;
+        this.leaderboardError = document.getElementById('leaderboard-error') as HTMLElement;
+        this.leaderboardErrorText = document.getElementById('leaderboard-error-text') as HTMLElement;
+        this.retryLeaderboardButton = document.getElementById('retry-leaderboard') as HTMLButtonElement;
+        this.leaderboardList = document.getElementById('leaderboard-list') as HTMLElement;
 
         // Get all answer buttons
         this.answerButtons = [
@@ -129,6 +165,9 @@ class VegasTriviaApp {
 
         // Setup question handlers
         this.setupQuestionHandlers();
+
+        // Setup navigation handlers
+        this.setupNavigationHandlers();
     }
 
     private setupLoginHandlers(): void {
@@ -163,6 +202,23 @@ class VegasTriviaApp {
         // Retry button handler
         this.retryButton.addEventListener('click', () => {
             this.fetchQuestion();
+        });
+    }
+
+    private setupNavigationHandlers(): void {
+        // View leaderboard button handler
+        this.viewLeaderboardButton.addEventListener('click', () => {
+            this.showLeaderboardScreen();
+        });
+
+        // Back to game button handler
+        this.backToGameButton.addEventListener('click', () => {
+            this.showGameScreen();
+        });
+
+        // Retry leaderboard button handler
+        this.retryLeaderboardButton.addEventListener('click', () => {
+            this.fetchLeaderboard();
         });
     }
 
@@ -225,7 +281,9 @@ class VegasTriviaApp {
         this.loginScreen.classList.remove('hidden');
         this.welcomeScreen.classList.add('hidden');
         this.gameScreen.classList.add('hidden');
+        this.leaderboardScreen.classList.add('hidden');
         this.usernameInput.focus();
+        this.clearLeaderboardTimer();
     }
 
     private showWelcomeScreen(username: string): void {
@@ -233,18 +291,37 @@ class VegasTriviaApp {
         this.loginScreen.classList.add('hidden');
         this.welcomeScreen.classList.remove('hidden');
         this.gameScreen.classList.add('hidden');
+        this.leaderboardScreen.classList.add('hidden');
 
         // Add fade-in animation
         this.welcomeScreen.classList.add('fade-in');
+        this.clearLeaderboardTimer();
     }
 
     private showGameScreen(): void {
         this.loginScreen.classList.add('hidden');
         this.welcomeScreen.classList.add('hidden');
         this.gameScreen.classList.remove('hidden');
+        this.leaderboardScreen.classList.add('hidden');
+
+        // Clear leaderboard timer when navigating away from leaderboard
+        this.clearLeaderboardTimer();
 
         // Fetch first question when game screen is shown
         this.fetchQuestion();
+    }
+
+    private showLeaderboardScreen(): void {
+        this.loginScreen.classList.add('hidden');
+        this.welcomeScreen.classList.add('hidden');
+        this.gameScreen.classList.add('hidden');
+        this.leaderboardScreen.classList.remove('hidden');
+
+        // Fetch leaderboard data when screen is shown
+        this.fetchLeaderboard();
+
+        // Start auto-refresh timer
+        this.startLeaderboardAutoRefresh();
     }
 
     private async fetchQuestion(): Promise<void> {
@@ -269,6 +346,31 @@ class VegasTriviaApp {
         } catch (error) {
             console.error('Error fetching question:', error);
             this.showQuestionError('Failed to load question. Please try again.');
+        }
+    }
+
+    private async fetchLeaderboard(): Promise<void> {
+        try {
+            // Show loading state
+            this.showLeaderboardLoadingState();
+
+            // Fetch leaderboard from API
+            const response = await fetch('/api/leaderboard');
+
+            if (!response.ok) {
+                throw new Error(`Failed to fetch leaderboard: ${response.status} ${response.statusText}`);
+            }
+
+            const leaderboard: LeaderboardEntry[] = await response.json();
+
+            // Store leaderboard data
+            this.leaderboardData = leaderboard;
+
+            // Display the leaderboard
+            this.displayLeaderboard();
+        } catch (error) {
+            console.error('Error fetching leaderboard:', error);
+            this.showLeaderboardError('Failed to load leaderboard. Please try again.');
         }
     }
 
@@ -313,6 +415,94 @@ class VegasTriviaApp {
             button.classList.remove('selected');
             button.disabled = false;
         });
+    }
+
+    private displayLeaderboard(): void {
+        // Hide loading and error states
+        this.leaderboardLoading.classList.add('hidden');
+        this.leaderboardError.classList.add('hidden');
+
+        // Show leaderboard list
+        this.leaderboardList.classList.remove('hidden');
+
+        // Clear existing list items
+        this.leaderboardList.innerHTML = '';
+
+        // Render leaderboard entries
+        this.leaderboardData.forEach((entry) => {
+            const item = document.createElement('div');
+            item.className = 'leaderboard-item';
+
+            // Add special class for top 3
+            if (entry.rank <= 3) {
+                item.classList.add(`rank-${entry.rank}`);
+            }
+
+            // Create rank badge
+            const rankBadge = document.createElement('div');
+            rankBadge.className = `rank-badge rank-badge-${entry.rank}`;
+
+            // Add trophy icon for top 3
+            if (entry.rank === 1) {
+                rankBadge.innerHTML = '<span class="trophy">&#129351;</span><span class="rank-number">1</span>';
+            } else if (entry.rank === 2) {
+                rankBadge.innerHTML = '<span class="trophy">&#129352;</span><span class="rank-number">2</span>';
+            } else if (entry.rank === 3) {
+                rankBadge.innerHTML = '<span class="trophy">&#129353;</span><span class="rank-number">3</span>';
+            } else {
+                rankBadge.innerHTML = `<span class="rank-number">${entry.rank}</span>`;
+            }
+
+            // Create user info container
+            const userInfo = document.createElement('div');
+            userInfo.className = 'user-info';
+
+            const username = document.createElement('div');
+            username.className = 'username';
+            username.textContent = entry.username;
+
+            userInfo.appendChild(username);
+
+            // Create stats container
+            const stats = document.createElement('div');
+            stats.className = 'stats';
+
+            const score = document.createElement('div');
+            score.className = 'score';
+            score.textContent = `Score: ${entry.score}`;
+
+            const questionsCorrect = document.createElement('div');
+            questionsCorrect.className = 'questions-correct';
+            questionsCorrect.textContent = `Correct: ${entry.questionsAnsweredCorrectly}`;
+
+            stats.appendChild(score);
+            stats.appendChild(questionsCorrect);
+
+            // Append all parts to item
+            item.appendChild(rankBadge);
+            item.appendChild(userInfo);
+            item.appendChild(stats);
+
+            // Add item to list
+            this.leaderboardList.appendChild(item);
+        });
+    }
+
+    private startLeaderboardAutoRefresh(): void {
+        // Clear any existing timer
+        this.clearLeaderboardTimer();
+
+        // Set up auto-refresh interval
+        this.leaderboardRefreshTimer = window.setInterval(() => {
+            this.fetchLeaderboard();
+        }, LEADERBOARD_REFRESH_INTERVAL);
+    }
+
+    private clearLeaderboardTimer(): void {
+        if (this.leaderboardRefreshTimer !== null) {
+            clearInterval(this.leaderboardRefreshTimer);
+            this.leaderboardRefreshTimer = null;
+        }
     }
 
     private handleAnswerSelection(answer: string): void {
@@ -443,6 +633,16 @@ class VegasTriviaApp {
         this.errorText.textContent = message;
     }
 
+    private showLeaderboardError(message: string): void {
+        // Hide loading and leaderboard list
+        this.leaderboardLoading.classList.add('hidden');
+        this.leaderboardList.classList.add('hidden');
+
+        // Show error container
+        this.leaderboardError.classList.remove('hidden');
+        this.leaderboardErrorText.textContent = message;
+    }
+
     private showLoadingState(): void {
         // Hide all other displays
         this.questionDisplay.classList.add('hidden');
@@ -451,6 +651,15 @@ class VegasTriviaApp {
 
         // Show loading
         this.questionLoading.classList.remove('hidden');
+    }
+
+    private showLeaderboardLoadingState(): void {
+        // Hide error and list
+        this.leaderboardError.classList.add('hidden');
+        this.leaderboardList.classList.add('hidden');
+
+        // Show loading
+        this.leaderboardLoading.classList.remove('hidden');
     }
 }
 

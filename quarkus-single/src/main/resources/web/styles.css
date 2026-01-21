@@ -15,6 +15,9 @@
     --color-success: #3e8635;
     --color-error-bg: #faeae8;
     --color-success-bg: #f3faf2;
+    --color-gold: #ffd700;
+    --color-silver: #c0c0c0;
+    --color-bronze: #cd7f32;
 
     --spacing-xs: 0.5rem;
     --spacing-sm: 1rem;
@@ -211,6 +214,27 @@ input[type="text"].input-success:focus {
     opacity: 0.6;
 }
 
+/* Navigation Button */
+.btn-nav {
+    padding: var(--spacing-xs) var(--spacing-md);
+    font-size: 0.875rem;
+    font-weight: 600;
+    background-color: var(--color-background);
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: inherit;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-nav:hover {
+    background-color: var(--color-primary);
+    color: white;
+}
+
 /* Welcome Card */
 .welcome-card {
     background: var(--color-surface);
@@ -246,6 +270,11 @@ input[type="text"].input-success:focus {
     .game-content {
         padding: var(--spacing-lg);
     }
+}
+
+.game-navigation {
+    margin-bottom: var(--spacing-md);
+    text-align: right;
 }
 
 /* Loading State */
@@ -389,6 +418,185 @@ input[type="text"].input-success:focus {
     background-color: var(--color-success-bg);
     border-left: 4px solid var(--color-success);
     border-radius: var(--border-radius);
+}
+
+/* Leaderboard Screen */
+.leaderboard-content {
+    background: var(--color-surface);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .leaderboard-content {
+        padding: var(--spacing-lg);
+    }
+}
+
+.leaderboard-navigation {
+    margin-bottom: var(--spacing-md);
+    text-align: left;
+}
+
+.leaderboard-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+@media (max-width: 768px) {
+    .leaderboard-title {
+        font-size: 1.5rem;
+    }
+}
+
+/* Leaderboard List */
+.leaderboard-list {
+    max-height: 500px;
+    overflow-y: auto;
+    padding: var(--spacing-xs);
+}
+
+.leaderboard-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+    background-color: var(--color-background);
+    border: 2px solid var(--color-border);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.leaderboard-item:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Top 3 Styling */
+.leaderboard-item.rank-1 {
+    border-color: var(--color-gold);
+    background-color: rgba(255, 215, 0, 0.05);
+}
+
+.leaderboard-item.rank-2 {
+    border-color: var(--color-silver);
+    background-color: rgba(192, 192, 192, 0.05);
+}
+
+.leaderboard-item.rank-3 {
+    border-color: var(--color-bronze);
+    background-color: rgba(205, 127, 50, 0.05);
+}
+
+/* Rank Badge */
+.rank-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 60px;
+    padding: var(--spacing-xs);
+    font-weight: 700;
+    border-radius: var(--border-radius);
+    background-color: var(--color-surface);
+}
+
+.rank-badge-1,
+.rank-badge-2,
+.rank-badge-3 {
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.rank-badge .trophy {
+    font-size: 1.5rem;
+}
+
+.rank-badge .rank-number {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.rank-badge-1 {
+    background-color: rgba(255, 215, 0, 0.2);
+    color: #b8860b;
+}
+
+.rank-badge-2 {
+    background-color: rgba(192, 192, 192, 0.3);
+    color: #696969;
+}
+
+.rank-badge-3 {
+    background-color: rgba(205, 127, 50, 0.2);
+    color: #8b4513;
+}
+
+/* User Info */
+.user-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.username {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-text);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Stats */
+.stats {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    text-align: right;
+    min-width: 120px;
+}
+
+.score,
+.questions-correct {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+}
+
+.score {
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+/* Responsive adjustments for leaderboard */
+@media (max-width: 768px) {
+    .leaderboard-item {
+        flex-wrap: wrap;
+        gap: var(--spacing-sm);
+    }
+
+    .rank-badge {
+        min-width: 50px;
+    }
+
+    .rank-badge .trophy {
+        font-size: 1.25rem;
+    }
+
+    .stats {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+        min-width: auto;
+    }
+
+    .username {
+        font-size: 1rem;
+    }
 }
 
 /* Hidden Utility Class */
