@@ -11,10 +11,10 @@ import java.util.concurrent.ThreadLocalRandom;
 @ApplicationScoped
 public class EnvironmentRepository {
 
-    private static final String MESSAGE_1 = "Quarkus enables live reload in dev mode for instant feedback during development";
-    private static final String MESSAGE_2 = "Quarkus delivers supersonic startup time and incredibly low memory footprint";
-    private static final String MESSAGE_3 = "Quarkus provides developer joy with unified configuration and simplified testing";
-    private static final String MESSAGE_4 = "Quarkus offers seamless integration with Kubernetes and cloud-native platforms";
+    private static final String MESSAGE_1 = "This question served by JBoss EAP 8 monolithic on OpenShift Virt.";
+    private static final String MESSAGE_2 = "This question served by JBoss EAP 8 on OpenShitft Virt in combination with a Quarkus microservice on Kubernetes.";
+    private static final String MESSAGE_3 = "This question served by Quarkus microservices on OpenShift.";
+    private static final String MESSAGE_4 = "This question served by Quarkus microservices on OpenShift with the help of HuggingFaceH4/zephyr-7b-beta on OpenShift AI.";
 
     /**
      * Retrieves a random Quarkus informational message from the available set.

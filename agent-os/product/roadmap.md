@@ -14,7 +14,7 @@
 
 7. [x] Frontend SPA with Quarkus Web Bundler — Set up Quarkus Web Bundler extension, create single-page application structure in src/main/resources/web, implement login screen with username input form, and configure bundler to serve SPA through Quarkus. `M`
 
-8. [ ] Question Display and Answer Submission UI — Build frontend components to display trivia questions with multiple-choice buttons, handle answer selection and submission via API calls, show informational messages alongside questions, and automatically transition to next question after submission. `M`
+8. [x] Question Display and Answer Submission UI — Build frontend components to display trivia questions with multiple-choice buttons, handle answer selection and submission via API calls, show informational messages alongside questions, and automatically transition to next question after submission. `M`
 
 9. [ ] Leaderboard Display UI — Create leaderboard view component that fetches rankings from API, displays usernames and scores in sorted order, and updates in real-time as users submit answers with periodic polling or manual refresh. `S`
 

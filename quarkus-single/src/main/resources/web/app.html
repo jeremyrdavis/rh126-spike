@@ -47,7 +47,53 @@
         <div id="game-screen" class="screen hidden">
             <div class="container">
                 <div class="game-content">
-                    <p class="loading-message">Loading...</p>
+                    <!-- Loading Spinner -->
+                    <div id="question-loading" class="loading-container hidden">
+                        <p class="loading-message">Loading...</p>
+                    </div>
+
+                    <!-- Error Display -->
+                    <div id="question-error" class="error-container hidden">
+                        <div class="error-message visible" role="alert" aria-live="polite">
+                            <p id="error-text"></p>
+                        </div>
+                        <button type="button" id="retry-question" class="btn btn-primary">
+                            Try Again
+                        </button>
+                    </div>
+
+                    <!-- Question Display -->
+                    <div id="question-display" class="question-container hidden">
+                        <h2 id="question-text"></h2>
+
+                        <div class="answer-options">
+                            <button type="button" id="answer-a" class="answer-btn" data-answer="A">
+                                <span class="answer-label">A:</span> <span class="answer-text"></span>
+                            </button>
+                            <button type="button" id="answer-b" class="answer-btn" data-answer="B">
+                                <span class="answer-label">B:</span> <span class="answer-text"></span>
+                            </button>
+                            <button type="button" id="answer-c" class="answer-btn" data-answer="C">
+                                <span class="answer-label">C:</span> <span class="answer-text"></span>
+                            </button>
+                            <button type="button" id="answer-d" class="answer-btn" data-answer="D">
+                                <span class="answer-label">D:</span> <span class="answer-text"></span>
+                            </button>
+                        </div>
+
+                        <p id="environment-message" class="environment-message"></p>
+
+                        <button type="button" id="submit-answer" class="btn btn-primary" disabled>
+                            Submit Answer
+                        </button>
+                    </div>
+
+                    <!-- Result Display -->
+                    <div id="result-display" class="result-container hidden">
+                        <div id="result-message" class="result-message"></div>
+                        <p id="result-question" class="result-question-text"></p>
+                        <p id="result-correct-answer" class="correct-answer-text"></p>
+                    </div>
                 </div>
             </div>
         </div>
